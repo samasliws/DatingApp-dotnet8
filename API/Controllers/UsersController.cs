@@ -1,6 +1,7 @@
 using System.Collections;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ namespace API.Controllers;
 //[Route("api/[controller]")] //  /api/users
 public class UsersController(DataContext context) : BaseApiController
 {    
-    
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
